@@ -48,6 +48,7 @@ namespace GlobalKeyboardHook.Sample
         private void Kl_KeyUp(object? sender, Events.KeyEventArgs e) => logs.Items.Insert(0, $"Action:    Up\t\t Key:    {e.Key}\t\t TimeStamp:    {e.TimeStamp}");
         private void Kl_HookedKeysChanged(object? sender, Events.HookedKeysChangedArgs e)
         {
+            
             HookedKeys.Items.Clear();
             foreach (Keys key in e.AllKeys)
                 HookedKeys.Items.Add(key.ToString());

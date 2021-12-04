@@ -27,21 +27,21 @@ KeyboardListener keyboardlistener = new KeyboardListener()
 ```csharp
 // Fires when KeyboardListener registers a new key press
 keyboardlistener.KeyDown += keyboardlistener_KeyDown
-void keyboardlistener_KeyDown(object? sender, Events.KeyEventArgs e)
+void keyboardlistener_KeyDown(object? sender, GlobalKeyboardHook.Events.KeyEventArgs e)
 {
   Console.WriteLine($"Action: Down     Key: {e.Key}    TimeStamp: {e.TimeStamp}");
 }
 
 // Fires when KeyboardListener registers a key gets released
 keyboardlistener.KeyUp += keyboardlistener_KeyUp
-void keyboardlistener_KeyUp(object? sender, Events.KeyEventArgs e)
+void keyboardlistener_KeyUp(object? sender, GlobalKeyboardHook.Events.KeyEventArgs e)
 {
   Console.WriteLine($"Action: Up     Key: {e.Key}    TimeStamp: {e.TimeStamp}");
 }
 
 // Fires when KeyboardListener HookedKeys-List changes
 keyboardlistener.HookedKeysChanged += keyboardlistener_HookedKeysChanged
-void keyboardlistener_HookedKeysChanged(object? sender, Events.HookedKeysChangedArgs e)
+void keyboardlistener_HookedKeysChanged(object? sender, GlobalKeyboardHook.Events.HookedKeysChangedArgs e)
 {
   foreach (Keys key in e.AddedKeys)
   {
