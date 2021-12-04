@@ -2,7 +2,7 @@
 
 namespace GlobalKeyboardHook
 {
-    public class KeyboardListener
+	public class KeyboardListener
 	{
 		#region DLL
 		[DllImport("user32.dll")]
@@ -19,12 +19,12 @@ namespace GlobalKeyboardHook
 		public struct HookStruct { public int keyCode; public int scanCode; public int flags; public int time; public int dwExtraInfo; }
 
 		IntPtr HookId = IntPtr.Zero;
-		static HookAction HookActionDelegate;
-		#endregion
-		#region General
-		public EventHandler<Events.KeyEventArgs> KeyDown;
-		public EventHandler<Events.KeyEventArgs> KeyUp;
-		public EventHandler<Events.HookedKeysChangedArgs> HookedKeysChanged;
+        static HookAction HookActionDelegate;
+        #endregion
+        #region General
+        public EventHandler<Events.KeyEventArgs>? KeyDown;
+		public EventHandler<Events.KeyEventArgs>? KeyUp;
+		public EventHandler<Events.HookedKeysChangedArgs>? HookedKeysChanged;
 
 		/// <summary>
 		/// Creates a new KeyboardListener wich listens to all keyboard inputs
@@ -42,7 +42,7 @@ namespace GlobalKeyboardHook
 		public KeyboardListener(Keys[] Keys)
 		{
 			HookedKeys = Keys.ToList();
-			HookedKeysChanged.Invoke(this, new(Keys, null, Keys, DateTime.Now));
+			HookedKeysChanged?.Invoke(this, new(Keys, null, Keys, DateTime.Now));
 			HookActionDelegate = hookProc;
 			Hook();
 		}
@@ -94,17 +94,17 @@ namespace GlobalKeyboardHook
 		/// Adds a key to the list of all keys the KeyboardListener listens
 		/// </summary>
 		/// <param name="Key">Key wich should get added</param>
-		public void AddHookedKey(Keys Key) { HookedKeys.Add(Key); HookedKeysChanged.Invoke(this, new(Key, null, GetHookedKeys(), DateTime.Now)); }
+		public void AddHookedKey(Keys Key) { HookedKeys.Add(Key); if (HookedKeysChanged != null) HookedKeysChanged.Invoke(this, new(Key, null, GetHookedKeys(), DateTime.Now)); }
 		/// <summary>
 		/// Removes a key from the list of all keys the KeyboardListener listens
 		/// </summary>
 		/// <param name="Key">Key wich should be deleted</param>
-		public void RemoveHookedKey(Keys Key) { HookedKeys.Remove(Key); HookedKeysChanged.Invoke(this, new(null, Key, GetHookedKeys(), DateTime.Now)); }
+		public void RemoveHookedKey(Keys Key) { HookedKeys.Remove(Key); if (HookedKeysChanged != null) HookedKeysChanged.Invoke(this, new(null, Key, GetHookedKeys(), DateTime.Now)); }
 		/// <summary>
 		/// Removes a key from the list of all keys the KeyboardListener listens
 		/// </summary>
 		/// <param name="Index">Index at wich position the key should be deleted</param>
-		public void RemoveHookedKeyAt(int Index) { HookedKeysChanged.Invoke(this, new(null, HookedKeys.ElementAt(Index), GetHookedKeys(), DateTime.Now)); HookedKeys.RemoveAt(Index); }
+		public void RemoveHookedKeyAt(int Index) { RemoveHookedKey(HookedKeys.ElementAt(Index)); }
 		#endregion
 	}
 }

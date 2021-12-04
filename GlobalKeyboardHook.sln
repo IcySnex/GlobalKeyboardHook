@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlobalKeyboardHook", "GlobalKeyboardHook\GlobalKeyboardHook.csproj", "{51279085-CDE8-4837-AFF7-BEF6BF834942}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlobalKeyboardHook.Sample", "GlobalKeyboardHook.Sample\GlobalKeyboardHook.Sample.csproj", "{D6BC31DF-71CE-4678-B2E2-0C2EC39E51CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{51279085-CDE8-4837-AFF7-BEF6BF834942}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51279085-CDE8-4837-AFF7-BEF6BF834942}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51279085-CDE8-4837-AFF7-BEF6BF834942}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6BC31DF-71CE-4678-B2E2-0C2EC39E51CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6BC31DF-71CE-4678-B2E2-0C2EC39E51CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6BC31DF-71CE-4678-B2E2-0C2EC39E51CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6BC31DF-71CE-4678-B2E2-0C2EC39E51CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

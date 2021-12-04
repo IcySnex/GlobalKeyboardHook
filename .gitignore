@@ -1,0 +1,12 @@
+.vs/
+res/
+GlobalKeyboardHook/obj/
+GlobalKeyboardHook/bin/
+GlobalKeyboardHook.Sample/obj/
+GlobalKeyboardHook.Sample/bin/
+*.suo
+*.user
+_ReSharper.*
+bin
+obj
+packages

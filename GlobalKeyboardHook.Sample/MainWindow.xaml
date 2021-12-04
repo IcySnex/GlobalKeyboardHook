@@ -1,0 +1,36 @@
+﻿<Window x:Class="GlobalKeyboardHook.Sample.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="150"/>
+        </Grid.RowDefinitions>
+        <ListBox x:Name="logs"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Button Content="Hook" Name="hook_btn" Click="hook_btn_Click"/>
+                <Button Grid.Row="1" Content="Unhook" Name="unhook_btn" Click="unhook_btn_Click"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBox Name="tbaddnew" GotFocus="tbaddnew_GotFocus" LostFocus="tbaddnew_LostFocus" IsReadOnly="True" KeyDown="AddHooked" Grid.Row="0" Text="Press here to add new key" TextAlignment="Center" TextWrapping="Wrap"/>
+                <Button Click="RemoveHooked" Grid.Row="1" Content="Remove Selected"/>
+            </Grid>
+            <CheckBox Grid.Column="2" Margin="5" Content="All Keys" Name="SetHookAllKeys" Unchecked="SetHookAllKeys_CheckChanged" Checked="SetHookAllKeys_CheckChanged"/>
+            <CheckBox Grid.Column="2" Margin="5,22,5,5" Content="Block Key" Name="BlockKey" IsChecked="True"/>
+            <ListBox Name="HookedKeys" Grid.Column="2" Margin="6,40,5,0"/>
+        </Grid>
+    </Grid>
+</Window>
