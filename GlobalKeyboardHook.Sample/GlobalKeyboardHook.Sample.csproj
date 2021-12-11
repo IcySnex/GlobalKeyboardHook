@@ -8,6 +8,10 @@
     <UseWindowsForms>true</UseWindowsForms>
 	<DebugType>embedded</DebugType>
 	  <PublishSingleFile>true</PublishSingleFile>
+	  <Version>1.1</Version>
+	  <AssemblyVersion>1.1</AssemblyVersion>
+	  <FileVersion>1.1</FileVersion>
+	  <Copyright>© IcySnex</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
