@@ -20,10 +20,24 @@ namespace GlobalKeyboardHook
 
 		IntPtr HookId = IntPtr.Zero;
         static HookAction HookActionDelegate;
-        #endregion
-        #region General
-        public EventHandler<Events.KeyEventArgs>? KeyDown;
+		bool ispr;
+		#endregion
+		#region General
+		/// <summary>
+		/// Fires when KeyboardListener registers a new key press
+		/// </summary>
+		public EventHandler<Events.KeyEventArgs>? KeyPress;
+		/// <summary>
+		/// Fires as long as the KeyboardListener registers a key is down
+		/// </summary>
+		public EventHandler<Events.KeyEventArgs>? KeyDown;
+		/// <summary>
+		/// Fires when KeyboardListener registers a key gets released
+		/// </summary>
 		public EventHandler<Events.KeyEventArgs>? KeyUp;
+		/// <summary>
+		/// Fires when KeyboardListener HookedKeys-List changes
+		/// </summary>
 		public EventHandler<Events.HookedKeysChangedArgs>? HookedKeysChanged;
 
 		/// <summary>
@@ -64,10 +78,17 @@ namespace GlobalKeyboardHook
 				Keys key = (Keys)lParam.keyCode;
 				if (HookedKeys.Contains(key) || HookAllKeys)
 				{
-					if ((wParam == 0x100 || wParam == 0x104) && (KeyDown != null))
-						KeyDown.Invoke(this, new(key, DateTime.Now, lParam));
-					else if ((wParam == 0x101 || wParam == 0x105) && (KeyUp != null))
-						KeyUp.Invoke(this, new(key, DateTime.Now, lParam));
+					if ((wParam == 0x100 || wParam == 0x104))
+					{
+						if (!ispr && KeyPress != null) KeyPress.Invoke(this, new(key, DateTime.Now, lParam));
+						if (KeyDown != null) KeyDown.Invoke(this, new(key, DateTime.Now, lParam));
+						ispr = true;
+					}
+					else if ((wParam == 0x101 || wParam == 0x105))
+					{
+						if (KeyUp != null) KeyUp.Invoke(this, new(key, DateTime.Now, lParam));
+						ispr = false;
+					}
 					if (BlockKeys) return 1;
 				}
 			}
