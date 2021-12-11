@@ -26,6 +26,13 @@ KeyboardListener keyboardlistener = new KeyboardListener()
 ### Events of KeyboardListener
 ```csharp
 // Fires when KeyboardListener registers a new key press
+keyboardlistener.KeyPress += keyboardlistener_KeyPress
+void keyboardlistener_KeyPress(object? sender, GlobalKeyboardHook.Events.KeyEventArgs e)
+{
+  Console.WriteLine($"Action: Press     Key: {e.Key}    TimeStamp: {e.TimeStamp}");
+}
+
+// Fires as long as the KeyboardListener registers a key is down
 keyboardlistener.KeyDown += keyboardlistener_KeyDown
 void keyboardlistener_KeyDown(object? sender, GlobalKeyboardHook.Events.KeyEventArgs e)
 {
