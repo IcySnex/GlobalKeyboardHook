@@ -1,3 +1,11 @@
+### Info: This repository is archived.
+This code was written by me when I just started learning C#, thus it is not very readable nor efficient. I would suggest not using this any longer.
+
+If you interested in a global Keyboard Hook for Windows, take a look at this service class: [ITunesShortcuts/KeyboardListener.cs](https://github.com/IcySnex/ITunesShortcuts/blob/main/ITunesShortcuts/Services/KeyboardListener.cs).
+It uses the same principle (Win32 Hooking) but it fixed a lot of issues like having to refernce WinForms. Additionally it added new features.
+
+---
+
 # GlobalKeyboardHook
 An easy to use libary to listen to all global keyboard inputs on windows for C#.
 It supports specifc key listening or general listening of all Keyboard keys.
